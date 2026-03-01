@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree[wght].woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Light mode - clean white content area */
+    --background: 0.975 0.004 250;
+    --foreground: 0.18 0.025 255;
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.025 255;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.025 255;
+    --primary: 0.52 0.18 250;
+    --primary-foreground: 0.99 0 0;
+    --secondary: 0.945 0.02 250;
+    --secondary-foreground: 0.28 0.06 255;
+    --muted: 0.94 0.012 255;
+    --muted-foreground: 0.5 0.04 255;
+    --accent: 0.92 0.04 250;
+    --accent-foreground: 0.28 0.08 255;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.99 0 0;
+    --border: 0.89 0.02 255;
+    --input: 0.89 0.02 255;
+    --ring: 0.52 0.18 250;
+
+    /* Semantic colors */
+    --success: 0.67 0.2 152;
+    --warning: 0.78 0.18 75;
+    --danger: 0.62 0.22 25;
+
+    /* Charts */
+    --chart-1: 0.52 0.18 250;
+    --chart-2: 0.67 0.2 152;
+    --chart-3: 0.78 0.18 75;
+    --chart-4: 0.62 0.22 25;
+    --chart-5: 0.72 0.15 300;
+
+    /* Sidebar - deep slate/navy */
+    --sidebar: 0.2 0.04 255;
+    --sidebar-foreground: 0.88 0.03 255;
+    --sidebar-primary: 0.65 0.18 250;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.28 0.05 255;
+    --sidebar-accent-foreground: 0.95 0.02 255;
+    --sidebar-border: 0.3 0.04 255;
+    --sidebar-ring: 0.52 0.18 250;
+
+    /* Score gauge colors */
+    --score-low: 0.62 0.22 25;
+    --score-mid: 0.78 0.18 75;
+    --score-high: 0.67 0.2 152;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .gradient-mesh {
+    background-image:
+      radial-gradient(ellipse at 20% 50%, oklch(0.52 0.18 250 / 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, oklch(0.67 0.2 152 / 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, oklch(0.72 0.15 300 / 0.05) 0%, transparent 50%);
+  }
+
+  .score-gradient-low {
+    background: conic-gradient(oklch(0.62 0.22 25) var(--score-pct), oklch(0.89 0.02 255) 0deg);
+  }
+  .score-gradient-mid {
+    background: conic-gradient(oklch(0.78 0.18 75) var(--score-pct), oklch(0.89 0.02 255) 0deg);
+  }
+  .score-gradient-high {
+    background: conic-gradient(oklch(0.67 0.2 152) var(--score-pct), oklch(0.89 0.02 255) 0deg);
+  }
+
+  .budget-bar-safe {
+    background-color: oklch(0.67 0.2 152);
+  }
+  .budget-bar-warn {
+    background-color: oklch(0.78 0.18 75);
+  }
+  .budget-bar-crit {
+    background-color: oklch(0.72 0.16 45);
+  }
+  .budget-bar-over {
+    background-color: oklch(0.62 0.22 25);
+  }
+
+  .sidebar-gradient {
+    background: linear-gradient(180deg, oklch(0.2 0.04 255) 0%, oklch(0.17 0.045 260) 100%);
+  }
+
+  .card-elevated {
+    box-shadow: 0 1px 3px oklch(0.18 0.025 255 / 0.06), 0 4px 16px oklch(0.18 0.025 255 / 0.04);
+  }
+
+  .card-interactive {
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .card-interactive:hover {
+    box-shadow: 0 4px 20px oklch(0.18 0.025 255 / 0.1), 0 1px 6px oklch(0.18 0.025 255 / 0.06);
+    transform: translateY(-1px);
+  }
+}
